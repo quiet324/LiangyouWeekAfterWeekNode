@@ -55,7 +55,7 @@ var j = schedule.scheduleJob(rule, function() { // rule hour at 5 minutes
 
         fs.writeFileSync('week.json', JSON.stringify({ "week": year + week }));
 
-        var createReops = "curl -u 'quiet324:538caadb32064c69aaa3a494c7e4719ab8bc78e8' https://api.github.com/user/repos -d '{\"name\":\"\'" + repoName + "\'\"}' ";
+        var createReops = "curl -u 'quiet324:18b5d4818f119d8011539d12907e98fbfb7c7540' https://api.github.com/user/repos -d '{\"name\":\"\'" + repoName + "\'\"}' ";
 
         if (shell.exec(createReops).code !== 0) {
             shell.echo('Error: Git create failed');
@@ -64,6 +64,8 @@ var j = schedule.scheduleJob(rule, function() { // rule hour at 5 minutes
 
         shell.mkdir('-p', '../../../' + repoName);
         shell.cp('../../artist.json', '../../../' + repoName);
+        shell.cp('../../.gitignore', '../../../' + repoName);
+
         if (shell.exec('rsync -r --exclude=.git ../../node ../../../' + repoName).code !== 0) {
             shell.echo('Error: rsync failed');
             shell.exit(1);
