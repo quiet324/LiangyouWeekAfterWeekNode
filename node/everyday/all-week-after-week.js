@@ -30,16 +30,16 @@ var token = JSON.parse(fs.readFileSync('.token', 'utf8')).token;
 
 
 
-var j = schedule.scheduleJob('0 * * * * *', function() { // "Runs job every minute"
+// var j = schedule.scheduleJob('0 * * * * *', function() { // "Runs job every minute"
 
-    // var j = schedule.scheduleJob('*/5 * * * *', function() { // "Runs job every 5 minute"
-    // var j = schedule.scheduleJob(rule, function() { // rule hour at 5 minutes
+// var j = schedule.scheduleJob('*/5 * * * *', function() { // "Runs job every 5 minute"
+var j = schedule.scheduleJob(rule, function() { // rule hour at 5 minutes
 
     var lastYearWeekValue = "";
 
     var year = moment().format('YYYY');
-    var week = moment().format('WW') + moment().unix();
-    // var week = moment().format('WW');
+    // var week = moment().format('WW') + moment().unix();
+    var week = moment().format('WW');
     var repoName = "LiangYouRadioResource" + year + week;
 
 
@@ -154,12 +154,12 @@ var j = schedule.scheduleJob('0 * * * * *', function() { // "Runs job every minu
 
                             console.log(moment().format('MMMM Do YYYY, h:mm:ss a') + "downloading..." + file);
 
-                            // var data = require('child_process').execFileSync('curl', ['--silent', '-L', audio.downUrl]);
+                            var data = require('child_process').execFileSync('curl', ['--silent', '-L', audio.downUrl]);
                             // var data = downloadFileSync(audio.downUrl)
 
                             mkdirp.sync('../../' + artist.shortName);
 
-                            // fs.writeFileSync('../../' + artist.shortName + '/' + fileName, data);
+                            fs.writeFileSync('../../' + artist.shortName + '/' + fileName, data);
 
                             var commitTag = artist.shortName + audio.time
 
