@@ -26,6 +26,8 @@ moment.tz.setDefault('Asia/Shanghai');
 
 var taskRunningTimes = 1;
 
+var token = JSON.parse(fs.readFileSync('.token', 'utf8')).token;
+
 
 
 var j = schedule.scheduleJob('0 * * * * *', function() { // "Runs job every minute"
@@ -55,7 +57,7 @@ var j = schedule.scheduleJob('0 * * * * *', function() { // "Runs job every minu
 
         fs.writeFileSync('week.json', JSON.stringify({ "week": year + week }));
 
-        var createReops = "curl -u 'quiet324:18b5d4818f119d8011539d12907e98fbfb7c7540' https://api.github.com/user/repos -d '{\"name\":\"\'" + repoName + "\'\"}' ";
+        var createReops = "curl -u 'quiet324:" + token + "' https://api.github.com/user/repos -d '{\"name\":\"\'" + repoName + "\'\"}' ";
 
         if (shell.exec(createReops).code !== 0) {
             shell.echo('Error: Git create failed');

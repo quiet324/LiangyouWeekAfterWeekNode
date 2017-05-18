@@ -11,7 +11,7 @@ if (!shell.which('git')) {
     shell.exit(1);
 }
 
-// var createReops = "curl -u 'quiet324:13664b16150f07594ba342fef11e3dfc23a251a0' https://api.github.com/user/repos -d '{\"name\":\"\'" + repoName + "\'\"}' ";
+// var createReops = "curl -u 'quiet324:$token' https://api.github.com/user/repos -d '{\"name\":\"\'" + repoName + "\'\"}' ";
 
 // if (shell.exec(createReops).code !== 0) {
 //     shell.echo('Error: Git create failed');
