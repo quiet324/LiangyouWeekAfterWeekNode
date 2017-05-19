@@ -128,7 +128,7 @@ var j = schedule.scheduleJob(rule, function() { // rule hour at 5 minutes
         if (artist.id == 49) { // 空中门训
             return;
         }
-        x('http://txly2.net/' + artist.shortName, 'tbody tr', {
+        x('http://txly2.net/' + artist.shortName, 'tbody #sermon0', {
                 "time": '.ss-title a',
                 "title": '.ss-title p',
                 "downUrl": '.ss-dl a@href'
