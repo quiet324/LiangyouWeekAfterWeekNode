@@ -6,7 +6,7 @@
     var lastYearWeekValue = "";
 
     var year = moment().format('YYYY');
-    var week = moment().format('WW');
+    var week = moment().format('ww');
     var repoName = "LiangYouRadioResource" + year + week;
 
 
