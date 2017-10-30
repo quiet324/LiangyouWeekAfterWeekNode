@@ -12,7 +12,7 @@ const download = require('download');
 //     "title": '.instancename'
 // }])
 
-x('http://new.ltshk.net/course/view.php?id=450', '.content', [{
+x('http://new.ltshk.net/course/view.php?id=518', '.content', [{
     "title": '.sectionname'
 }])
 

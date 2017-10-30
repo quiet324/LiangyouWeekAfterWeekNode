@@ -10,7 +10,7 @@ const download = require('download');
 
 var urls = [];
 
-for (var i = 7858; i <= 8002; i++) {
+for (var i = 9218; i <= 9289; i++) {
 
     // if (i === 5300 || i === 5301) {
     //     continue;
