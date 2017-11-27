@@ -21,6 +21,9 @@ x(url, 'table', [{
             return n.path.indexOf("biblexpo") !== -1;
         });
 
+        var hrefs = _.remove(hrefs, function(n) {
+            return n.path.indexOf(".pdf") === -1;
+        });
 
 
 

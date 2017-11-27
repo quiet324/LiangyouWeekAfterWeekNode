@@ -22,7 +22,9 @@ x(url, 'table', [{
         });
 
 
-
+        var hrefs = _.remove(hrefs, function(n) {
+            return n.path.indexOf(".pdf") === -1;
+        });
 
         x(url, 'div', [{
                 // "path": 'a@href',
