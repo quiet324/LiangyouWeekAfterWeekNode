@@ -7,6 +7,7 @@ var dateFormat = require('dateformat');
 var async = require('async');
 var downloadFileSync = require('download-file-sync');
 var schedule = require('node-schedule');
+var _ = require('underscore');
 
 var rule = new schedule.RecurrenceRule();
 // rule.dayOfWeek = [0, new schedule.Range(4, 6)];

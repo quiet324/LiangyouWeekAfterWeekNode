@@ -28,6 +28,8 @@ var taskRunningTimes = 1;
 
 
 var names = JSON.parse(fs.readFileSync('./all_zdfj_songs.json', 'utf8'));
+console.log(names.length);
+
 names.forEach(function(name, indexId) {
 
 

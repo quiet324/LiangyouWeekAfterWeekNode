@@ -42,7 +42,7 @@ names.forEach(function(name, indexId) {
 
 });
 
-fs.writeFile("./vof2017_songs.json", JSON.stringify(audios, null, '\t'));
+fs.writeFile("./vof2017_songs_3.json", JSON.stringify(audios, null, '\t'));
 
 
 

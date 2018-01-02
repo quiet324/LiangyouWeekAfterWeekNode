@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "async": "^2.4.0",
+    "cos-nodejs-sdk-v5": "^2.0.20",
     "csvtojson": "^1.1.7",
     "dateformat": "^2.0.0",
     "deasync": "^0.1.10",

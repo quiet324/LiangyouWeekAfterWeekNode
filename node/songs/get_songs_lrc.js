@@ -13,9 +13,10 @@ var results = JSON.parse(fs.readFileSync('./all_songs_titles_result_no_baomihua.
 
 results.forEach(function(result, arrayIndex) {
 
+    var sync2 = true;
+
     // var results = JSON.parse(fs.readFileSync('./2010fhjtj.json', 'utf8'));
 
-    var done = false;
 
     // x(url, '#body #left td p', [{
     //         "content": '',
@@ -38,6 +39,8 @@ results.forEach(function(result, arrayIndex) {
         });
 
         if (hrefs.length === 0) {
+            sync2 = false;
+
             return;
         }
 
@@ -47,6 +50,8 @@ results.forEach(function(result, arrayIndex) {
         finalResult.path = "http://www.729ly.net/Template/Shared/songs" + mp3Url;
         finalResult.title = result.title;
         // console.log(finalResult);
+
+        var sync = true;
 
         x(result.mp3Url, '#body #left td p', [{
                 "content": '',
@@ -63,6 +68,8 @@ results.forEach(function(result, arrayIndex) {
                 console.log(err);
 
                 if (typeof titles === 'undefined') {
+                    sync = false;
+
                     return;
                 }
 
@@ -77,37 +84,23 @@ results.forEach(function(result, arrayIndex) {
                 console.log(finalResult);
 
                 finalSongsWithLrc.push(finalResult);
-                // titles.forEach(function(audio, arrayIndex) {
+                fs.writeFile("./result_songs_with_lrc_3.json", JSON.stringify(finalSongsWithLrc, null, '\t'));
 
-                //     audio.title = audio.title.trim();
-                //     audio.path = hrefs[arrayIndex].path;
-                //     audio.duration = 1700;
-                //     audio.size = "5M";
-                //     audio.albumName = "《真道分解》2010年复活节特辑：与主同死同埋葬同复活";
-                //     audio.albumId = 497;
-                //     audio.id = 497888180 + arrayIndex;
-                //     // audio.id = _.last(results).id + 1 + arrayIndex;
-
-                //     audio.albumtitle = "《真道分解》2010年复活节特辑：与主同死同埋葬同复活(" + (audio.id - 497888180 + 1) + ")";
-
-
-                // });
-
-
-                // // var other = _.concat(results, titles);
-                done = true;
+                sync = false;
 
                 // fs.writeFile("./result_songs_with_lrc.json", JSON.stringify(finalSongsWithLrc, null, '\t'));
 
             });
+        while (sync) { require('deasync').sleep(2000); }
+
+        sync2 = false;
 
 
-        // require('deasync').loopWhile(function() { return !done; });
-
-        fs.writeFile("./result_songs_with_lrc.json", JSON.stringify(finalSongsWithLrc, null, '\t'));
 
     });
 
+
+    while (sync2) { require('deasync').sleep(2000); }
 
     // require('deasync').loopWhile(function() { return !done; });
 

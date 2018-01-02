@@ -5,7 +5,6 @@ const download = require('download');
 const _ = require('lodash');
 
 const allSongsTitle = [];
-
 const url = 'http://www.729ly.net/Common/Reader/Channel/ShowPage.jsp?Cid=1929&Pid=67&Version=0&Charset=gb2312&page=';
 
 // var results = JSON.parse(fs.readFileSync('./2010fhjtj.json', 'utf8'));
